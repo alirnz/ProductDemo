@@ -33,10 +33,17 @@ namespace ProductDemo.Infrastructure.Repositories
         {
             await _dbContext.Set<T>().AddAsync(entity);
         }
-
+        public async Task AddRange(IEnumerable<T> entities)
+        {
+            await _dbContext.Set<T>().AddRangeAsync(entities);
+        }
         public void Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
+        }
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbContext.Set<T>().RemoveRange(entities);
         }
 
         public void Update(T entity)
